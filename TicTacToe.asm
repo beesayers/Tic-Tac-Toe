@@ -35,7 +35,7 @@ main:					#
 	lw 	$s3, IsGameOver		# IsGameOver = false;
 newGame:				#
 	li 	$t0, 0			# A = false;
-	move 	$s3, $t0		# IsGameOver = false;
+	move 	$s3, $t0                # IsGameOver = false;
 gameloop:				#
 	beq 	$s3, 1, endloop		# if (IsGameOver == true)
 	addi	$sp, $sp, -4		# 
@@ -75,12 +75,12 @@ AddMove:				#
 Xmove:					#
 	li 	$t4, 88			# D = 'X';
 	li 	$t5, 79			# E = 'O';
-	move 	$s2, $t5		# whosMove = 'O';
+	move 	$s2, $t5                # whosMove = 'O';
 	j 	WriteToBoard		#
 Omove:					#
 	li 	$t4, 79			# D = 'O';
 	li 	$t5, 88			# E = 'X';
-	move 	$s2, $t5		# whosMove = 'X';
+	move 	$s2, $t5                # whosMove = 'X';
 WriteToBoard:				#
 	sb      $t4, ($t2)       	# Board[Column][Row] = 'X' or 'O';
 	addi	$s0, $s0, 1		# moveCount = moveCount + 1;
@@ -92,27 +92,26 @@ InputError:				#
 	syscall		 		# 
 	j	AddMove			#	
 DisplayBoard:				#	(This for loop is for all of display board) 
-        				#
         lb      $a0, ($s1)  		# for (int Column = 0; Column < 3; Column++) 
         li      $v0, 11			# {
-	syscall 			#	for (int Row = 0; Row < 3; Row++) 	
+	syscall                         #	for (int Row = 0; Row < 3; Row++) 	
 	lb      $a0, 1($s1)  		#	{
         li      $v0, 11			# 		System.out.print (board[Column][Row]); 
-	syscall 			#	}
+	syscall                         #	}
 	lb      $a0, 2($s1)  		#	System.out.println (""); 
         li      $v0, 11			# }
-	syscall 			#	
+	syscall                         #	
         				#
         li      $a0, 10  		# 
         li      $v0, 11     	        # 
-	syscall 			#
+	syscall				#
 					#
 	lb      $a0, 3($s1)  		#
         li      $v0, 11     	        #
-	syscall 			#
+	syscall				#
 	lb      $a0, 4($s1)  		#
         li      $v0, 11     	        #    
-	syscall 			#
+	syscall				#
 	lb      $a0, 5($s1)  		#
         li      $v0, 11			#    
 	syscall 			#
