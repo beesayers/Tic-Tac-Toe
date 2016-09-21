@@ -114,28 +114,30 @@ DisplayBoard:				#	(This for loop is for all of display board)
 	syscall				#
 	lb      $a0, 5($s1)  		#
         li      $v0, 11			#    
-	syscall 			#
+	syscall                         #
 					#
 	li      $a0, 10  		#
         li      $v0, 11     	        #         
-	syscall 			#
+	syscall                         #
 					#
 	lb      $a0, 6($s1)  		#
         li      $v0, 11     	        #      
-	syscall 			#
+	syscall                         #
+	                                #
 	lb      $a0, 7($s1)  		#
         li      $v0, 11			#   
-	syscall 			#
+	syscall                         #
+	                                #
 	lb      $a0, 8($s1)  		#
         li      $v0, 11     	        #    
-	syscall 			#
+	syscall                         #
 					#
 	li      $a0, 10  		#
         li      $v0, 11     	        #         
-	syscall  			#
+	syscall                         #
 	jr 	$ra 			#
 IsAWin:					# 
-	blt 	$s0, 5, NoWinYet	# if (moveCount < 5)
+	blt 	$s0, 5, NoWinYet        # if (moveCount < 5)
 	lb      $t0, ($s1)		# ------ Start for loop here ------
 	lb      $t1, 1($s1)		# for (int Column = 0; Column < 3; Column++)
 	lb      $t2, 2($s1)		# {
@@ -184,40 +186,40 @@ Win11:					#
 	li 	$t9, 1			# 
 	lb      $a0, ($s1)  		#
         li      $v0, 11     	       	#        
-	syscall 			#
-	la 	$a0, Win		#
+	syscall                         #
+	la 	$a0, Win                #
 	li 	$v0, 4			#
-	syscall				#
+	syscall                         #
 	li      $a0, 10  		#
         li      $v0, 11     	        #         
-	syscall 			#
-	move 	$s3, $t9		#
+	syscall                         #
+	move 	$s3, $t9                #
 	j 	NoWinYet		#
 Win22:					#
 	li 	$t9, 1			#
 	lb      $a0, 4($s1)  		#
         li      $v0, 11			#
-	syscall 			#
-	la 	$a0, Win		#
+	syscall                         #
+	la 	$a0, Win                #
 	li 	$v0, 4			#
-	syscall				#
-	li      $a0, 10  		#
+	syscall                         #
+	li      $a0, 10                 #
         li      $v0, 11     	        #         
-	syscall 			#
-	move 	$s3, $t9		#
+	syscall                         #
+	move 	$s3, $t9                #
 	j 	NoWinYet		#
 Win33:					#
 	li 	$t9, 1			#
 	lb      $a0, 8($s1)  		#
-        li      $v0, 11 		#
-	syscall 			#
-	la 	$a0, Win		#
+        li      $v0, 11                 #
+	syscall                         #
+	la 	$a0, Win                #
 	li 	$v0, 4			#
 	syscall				#
 	li      $a0, 10  		#
         li      $v0, 11     	        #         
-	syscall 			#
-	move 	$s3, $t9		#
+	syscall                         #
+	move 	$s3, $t9                #
 	j 	NoWinYet		#
 ItsADraw:				#
 	li 	$t9, 1			#
@@ -227,8 +229,8 @@ ItsADraw:				#
 	syscall				#
 	li      $a0, 10  		#
         li      $v0, 11     	        #         
-	syscall 			#
-	move 	$s3, $t9		# ------ End for loop here ------
+	syscall                         #
+	move 	$s3, $t9                # ------ End for loop here ------
 NoWinYet:				#
 	jr $ra				#
 ResetBoard:				# 
@@ -245,8 +247,8 @@ ResetBoard:				#
 	sb      $t0, 7($s1)		#	}
 	sb      $t0, 8($s1)		# }
 					# ------ End for loop here ------
-	move 	$s0, $t2		# moveCount = C;
-	move 	$s2, $t1		# whosMove = B;
+	move 	$s0, $t2                # moveCount = C;
+	move 	$s2, $t1                # whosMove = B;
 	jr $ra				#
 endloop:				#
 	la 	$a0, PlayAgain		#
@@ -254,7 +256,7 @@ endloop:				#
 	syscall				# System.out.print("Enter '1' to play another game. Otherwise, enter any other single-digit intger to quit the program.");
 	li      $a0, 10  		# 
         li      $v0, 11     	        #         
-	syscall 			# System.out.println("");
+	syscall                         # System.out.println("");
 	li	$v0, 5			# 
 	syscall				# 
 	beq 	$v0, 1, newGame		# if (newGame == 1) 
