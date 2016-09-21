@@ -1,0 +1,2 @@
+# Tic-Tac-Toe
+This program allows the user to simulate the wickedly popular game, tic tac toe. The program uses a rudimentary interface which prompts the user for the row then column they would like to place their move.  After placing a move, the program displays the current board to screen in the form of a 3x3 matrix with either "." for empty spaces, "X" for first player, and "O" for second player
